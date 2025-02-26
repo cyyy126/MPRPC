@@ -1,0 +1,10 @@
+/home/cyyy/project/MPRPC/MPRPC/build/CMakeFiles/edit_cache.dir
+/home/cyyy/project/MPRPC/MPRPC/build/CMakeFiles/rebuild_cache.dir
+/home/cyyy/project/MPRPC/MPRPC/build/src/CMakeFiles/mprpc.dir
+/home/cyyy/project/MPRPC/MPRPC/build/src/CMakeFiles/edit_cache.dir
+/home/cyyy/project/MPRPC/MPRPC/build/src/CMakeFiles/rebuild_cache.dir
+/home/cyyy/project/MPRPC/MPRPC/build/example/CMakeFiles/edit_cache.dir
+/home/cyyy/project/MPRPC/MPRPC/build/example/CMakeFiles/rebuild_cache.dir
+/home/cyyy/project/MPRPC/MPRPC/build/example/callee/CMakeFiles/provider.dir
+/home/cyyy/project/MPRPC/MPRPC/build/example/callee/CMakeFiles/edit_cache.dir
+/home/cyyy/project/MPRPC/MPRPC/build/example/callee/CMakeFiles/rebuild_cache.dir
