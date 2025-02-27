@@ -11,3 +11,7 @@ mprpc框架链接muduo库的时候，发现动态库链接静态库会有问题�
 
 # 25/2/26日：
 捋清楚了callee方的流程，首先它本地有很多服务Service，可以通过NotifyService这个方法去把本地Service写入到框架中，比如服务的名字，服务的描述，里面具体方法的名称以及方法描述，写入之后，就可以启动一个rpc服务发布节点，即启动网络服务，如果有网络连接进来，通过OnMessage这个回调函数，把接收的网络连接的字符串，进行解析，得到原始流字符串，然后反序列化，得到rpc的具体请求信息，比如服务名称，方法名称，参数大小等等，通过一开始设置的Map容器，获取是哪个服务对象和以及哪个方法的具体信息，然后呢根据框架中注册的Service，得到rpc调用方法的request，然后得到具体方法的response，序列化response，通过CallMethod绑定回调函数发送给rpc调用方。
+
+
+# 25/2/27日：
+做完了mprpc的基本功能与测试，捋一下流程，首先启动服务端，把本地的服务Service上传到rpc框架上，然后启动客户端，会自动new一个channel来传输信息，这个channel很重要，继承了public google::protobuf::RpcChannel，父类有callmethond纯虚函数，所以我们需要把自定义的channel重写这个纯虚函数，让我们待会调用服务方法的时候会跳转到子类的callmethond方法，根据一开始定义好的LoginRequest里面的方法，填写Request的参数，然后以及rpc的响应，然后去调用想用的方法，例如Login，客户端只需传入request和response就行，传入之后，首先根据你调用的方法，得到方法所在的服务名和方法名，然后将你传入的request参数序列化，得到参数序列化字符串长度args_size，然后定义rpc网络通信的头部(header = header_size + service_name method_name + args_size + args)由这些组成，这样就只差header_size了，通过header去序列化字符串得到header_size的大小，然后就可以组织发送rpc请求的字符串了，把头部大小和头部字符串和参数字符串组合起来，使用tcp编程配置好ip地址和端口号，然后把请求发过去，正常接收以及打印日志即可。
