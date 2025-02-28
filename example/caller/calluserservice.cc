@@ -20,6 +20,7 @@ int main(int argc, char **argv)
     // 发起rpc方法的调用，同步rpc方法的调用过程
     stub.Login(nullptr, &request, &response, nullptr);
 
+
     // 一次rpc调用完成，读取调用的结果
     if (0 == response.result().errcode())
     {
@@ -30,5 +31,29 @@ int main(int argc, char **argv)
     {
         std::cout << "rpc login response error: " << response.result().errmsg() << std::endl;
     }
+
+
+    // 演示远程调用rpc发布的方法 Request
+    fixbug::RegisterRequest req;
+    req.set_id(1);
+    req.set_name("li si");
+    req.set_pwd("233125");
+    // rpc方法的响应
+    fixbug::RegisterResponse rsp;
+    // 发起rpc方法的调用，同步rpc方法的调用过程
+    stub.Register(nullptr, &req, &rsp, nullptr);
+
+
+    // 一次rpc调用完成，读取调用的结果
+    if (0 == rsp.result().errcode())
+    {
+        std::cout << "rpc register response success: " << rsp.success() << std::endl;
+
+    }
+    else
+    {
+        std::cout << "rpc register response error: " << rsp.result().errmsg() << std::endl;
+    }
+
     return 0;
 }
