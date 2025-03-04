@@ -1,0 +1,4 @@
+14:18:44 => first logger message!
+14:18:44 => /home/cyyy/project/MPRPC/MPRPC/example/callee/friendservice.cc:main:53
+14:34:27 => first logger message!
+14:34:27 => /home/cyyy/project/MPRPC/MPRPC/example/callee/friendservice.cc:main:53

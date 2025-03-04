@@ -1,0 +1,2 @@
+16:3:33 => first logger message!
+16:3:33 => /home/cyyy/project/MPRPC/MPRPC/example/callee/friendservice.cc:main:53
